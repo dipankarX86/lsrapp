@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// test route for react app // react app will depend on thunk functions to reach this one
+Route::get('/shop', function(){
+    return "Hello world!!";
+});
+
+// BOILERPLATE route
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
