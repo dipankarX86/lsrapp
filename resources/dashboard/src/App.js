@@ -3,6 +3,7 @@ import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 import AdminUserLogin from './pages/AdminUserLogin';
 
 // All Master Admin Pages imported Bellow
+import MasterHeader from './pages/master/MasterHeader'
 import MasterAdminDashboard from './pages/master/MasterAdminDashboard';
 import CreateShop from './pages/master/shops/CreateShop';
 import EditShop from './pages/master/shops/EditShop';
@@ -34,12 +35,14 @@ function App() {
           <Route path='/' element={<AdminUserLogin />} />
 
           {/* Master Admin */}
-          <Route path='/master' element={<MasterAdminDashboard />} />
-          {/* Master Admin Shop Pages */}
-          <Route path='/master/shops' element={<Shops />} />
-          <Route path='/master/shops/1' element={<Shop />} />
-          <Route path='/master/shops/create' element={<CreateShop />} />
-          <Route path='/master/shops/edit/1' element={<EditShop />} />
+          <Route path='/master' element={<MasterHeader />} >
+            {/* Master Admin Shop Pages */}
+            <Route path='/master' element={<MasterAdminDashboard />} />
+            <Route path='/master/shops' element={<Shops />} />
+            <Route path='/master/shops/1' element={<Shop />} />
+            <Route path='/master/shops/create' element={<CreateShop />} />
+            <Route path='/master/shops/edit/1' element={<EditShop />} />
+          </Route>
 
           {/* Shop Admin */}
           <Route path='/shop' element={<ShopAdminDashboard />} />

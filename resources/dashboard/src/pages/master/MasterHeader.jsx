@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { Outlet } from "react-router-dom";
 
 function MasterHeader() {
     return (
+        <>
         <header className='header'>
             <li>
                 <Link to='/master/shops'>
@@ -25,6 +27,8 @@ function MasterHeader() {
                 </Link>
             </li>
         </header>
+        <Outlet />
+        </>
     )
 }
 
