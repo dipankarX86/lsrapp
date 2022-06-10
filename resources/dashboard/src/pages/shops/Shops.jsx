@@ -1,7 +1,7 @@
 
 function Shops() {
   return (
-    <div>Shops</div>
+    <div>Shops coming from routed component</div>
   )
 }
 
