@@ -3,7 +3,7 @@ import React from 'react'
 function MasterAdminDashboard() {
   return (
     <>
-      <h1>Master Admin Dashboard Home!</h1>
+      <h2>Master Admin Dashboard Home!</h2>
     </>
   )
 }
