@@ -1,7 +1,7 @@
 
 function CreateShop() {
   return (
-    <div>createShop</div>
+    <div>createShop coming from routed component</div>
   )
 }
 
