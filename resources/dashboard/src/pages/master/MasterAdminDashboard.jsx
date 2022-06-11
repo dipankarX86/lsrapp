@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { Outlet } from "react-router-dom"
 import {FaSignInAlt} from 'react-icons/fa'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from 'react-bootstrap'
 
 function MasterAdminDashboard() {
     return (
@@ -28,6 +30,9 @@ function MasterAdminDashboard() {
                     </Link>
                 </li>
             </header>
+
+            <Button>This is RB Button</Button>
+
             <Outlet />
         </>
     )
