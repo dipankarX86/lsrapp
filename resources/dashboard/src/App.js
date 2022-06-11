@@ -3,8 +3,8 @@ import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 import AdminUserLogin from './pages/AdminUserLogin';
 
 // All Master Admin Pages imported Bellow
-import MasterHeader from './pages/master/MasterHeader'
 import MasterAdminDashboard from './pages/master/MasterAdminDashboard';
+import MasterAdminHome from './pages/master/MasterAdminHome';
 import CreateShop from './pages/master/shops/CreateShop';
 import EditShop from './pages/master/shops/EditShop';
 import Shop from './pages/master/shops/Shop';
@@ -35,9 +35,9 @@ function App() {
           <Route path='/' element={<AdminUserLogin />} />
 
           {/* Master Admin */}
-          <Route path='/master' element={<MasterHeader />} >
+          <Route path='/master' element={<MasterAdminDashboard />} >
             {/* Master Admin Shop Pages */}
-            <Route path='/master' element={<MasterAdminDashboard />} />
+            <Route path='/master' element={<MasterAdminHome />} />
             <Route path='/master/shops' element={<Shops />} />
             <Route path='/master/shops/1' element={<Shop />} />
             <Route path='/master/shops/create' element={<CreateShop />} />
