@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 // test route for react app // react app will depend on thunk functions to reach this one
 Route::get('/shop', function(){
     return "Hello world!!";
+});
+Route::get('/shops', function(){
+    return Shop::all();
 });
 
 // BOILERPLATE route
