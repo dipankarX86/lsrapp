@@ -23,12 +23,12 @@ Route::post('/users', function() {
 // });
 Route::post('/shops', function(Request $request) {
 
-
-    // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-    // $txt = $request;
-    // fwrite($myfile, $txt);
-    // fclose($myfile);
-
+    // 
+    $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+    $txt = $request;
+    fwrite($myfile, $txt);
+    fclose($myfile);
+    // 
 
     return $request;
 });
