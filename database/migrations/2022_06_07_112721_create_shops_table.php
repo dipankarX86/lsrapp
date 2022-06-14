@@ -16,23 +16,36 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
 
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->foreignId('address'); //
-            $table->string('gps');
-            $table->string('owner_first_name');
-            $table->string('owner_last_name');
-            $table->string('owner_email');
-            $table->string('owner_phone');
-            $table->foreignId('owner_address'); //
-            
-            // $table->foreignId('initial_details'); //
-            // $table->foreignId('gallery'); //  load these separately in another rest call if needed
-                                            // can be easily searched for the shop id, dont link them in the model
+            $table->email();
+            $table->phone();
+            // 
+            $table->addr_line_1();
+            $table->addr_line_2();
+            $table->addr_city();
+            $table->addr_state();
+            $table->addr_country();
+            $table->addr_postal_code();
+            // 
+            $table->lat_lon();
+            // 
+            $table->pan();
+            $table->gst();
+            $table->trade_license();
+            // 
+            $table->owner_name();
+            $table->owner_email();
+            $table->owner_phone();
+            // 
+            $table->owner_addr_line_1();
+            $table->owner_addr_line_2();
+            $table->owner_addr_city();
+            $table->owner_addr_state();
+            $table->owner_addr_country();
+            $table->owner_addr_postal_code();
 
-            $table->foreignId('pan'); //
-            $table->foreignId('gst'); //
-            $table->foreignId('trade_license'); //
+            // $table->foreignId('initial_details');
+            // $table->foreignId('gallery');        // load these separately in another rest call if needed
+                                                    // can be easily searched for the shop id, dont link them in the model
 
             $table->timestamps();
         });

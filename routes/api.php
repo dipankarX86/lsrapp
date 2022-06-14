@@ -18,18 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::post('/users', function() {
     return 'from backend users';
 });
+
 // Route::get('/shops', function(Request $request) {
 //     return $request;
 // });
+
 Route::post('/shops', function(Request $request) {
-
     // 
-    $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-    $txt = $request;
-    fwrite($myfile, $txt);
-    fclose($myfile);
+    // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+    // $txt = $request;
+    // fwrite($myfile, $txt);
+    // fclose($myfile);
     // 
-
     return $request;
 });
 
