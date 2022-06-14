@@ -27,7 +27,7 @@ import HomeServiceDashboard from './pages/homeService/HomeServiceDashboard';
 
 function App() {
   return (
-    <>
+    <div className='container'>
       <h1>This is outside of router</h1>
       <Router>
         <Routes>
@@ -61,7 +61,7 @@ function App() {
           
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }
 

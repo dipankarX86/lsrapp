@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { Outlet } from "react-router-dom"
 import {FaSignInAlt} from 'react-icons/fa'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from 'react-bootstrap'
+import Button from 'react-bootstrap/Button';
 
 function MasterAdminDashboard() {
     return (
