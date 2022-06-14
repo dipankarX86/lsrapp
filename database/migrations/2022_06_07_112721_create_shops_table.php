@@ -16,32 +16,32 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
 
-            $table->email();
-            $table->phone();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
             // 
-            $table->addr_line_1();
-            $table->addr_line_2();
-            $table->addr_city();
-            $table->addr_state();
-            $table->addr_country();
-            $table->addr_postal_code();
+            $table->string('addr_line_1')->nullable();
+            $table->string('addr_line_2')->nullable();
+            $table->decimal('addr_city', 5, 0)->nullable();
+            $table->decimal('addr_state', 5, 0)->nullable();
+            $table->decimal('addr_country', 5, 0)->nullable();
+            $table->string('addr_postal_code')->nullable();
             // 
-            $table->lat_lon();
+            $table->string('lat_lon')->nullable();
             // 
-            $table->pan();
-            $table->gst();
-            $table->trade_license();
+            $table->string('pan')->nullable();
+            $table->string('gst')->nullable();
+            $table->string('trade_license')->nullable();
             // 
-            $table->owner_name();
-            $table->owner_email();
-            $table->owner_phone();
+            $table->string('owner_name')->nullable();
+            $table->string('owner_email')->nullable();
+            $table->string('owner_phone')->nullable();
             // 
-            $table->owner_addr_line_1();
-            $table->owner_addr_line_2();
-            $table->owner_addr_city();
-            $table->owner_addr_state();
-            $table->owner_addr_country();
-            $table->owner_addr_postal_code();
+            $table->string('owner_addr_line_1')->nullable();
+            $table->string('owner_addr_line_2')->nullable();
+            $table->decimal('owner_addr_city', 5, 0)->nullable();
+            $table->decimal('owner_addr_state', 5, 0)->nullable();
+            $table->decimal('owner_addr_country', 5, 0)->nullable();
+            $table->string('owner_addr_postal_code')->nullable();
 
             // $table->foreignId('initial_details');
             // $table->foreignId('gallery');        // load these separately in another rest call if needed

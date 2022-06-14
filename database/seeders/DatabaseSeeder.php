@@ -22,14 +22,5 @@ class DatabaseSeeder extends Seeder
         // seed shops
         Shop::factory(6)->create();
 
-        // seed categories
-        // Category::factory(6)->create();
-
-        // seed services
-        // Service::factory(6)->create();
-
-        // seed customers
-        // Customer::factory(6)->create();
-
     }
 }
