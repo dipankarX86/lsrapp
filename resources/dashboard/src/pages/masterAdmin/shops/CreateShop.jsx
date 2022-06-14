@@ -26,7 +26,7 @@ function CreateShop() {
     gst: '',
     tradeLicense: '',
 
-    ownerName: '',
+    owner_name: '',
     ownerEmail: '',
     ownerPhone: '',
 
@@ -55,7 +55,7 @@ function CreateShop() {
     gst, 
     tradeLicense,
 
-    ownerName, 
+    owner_name, 
     ownerEmail, 
     ownerPhone, 
 
@@ -114,7 +114,7 @@ function CreateShop() {
       gst, 
       tradeLicense,
 
-      ownerName, 
+      owner_name, 
       ownerEmail, 
       ownerPhone, 
 
@@ -325,7 +325,7 @@ function CreateShop() {
               className="" 
               id="ownerName" 
               name="ownerName" 
-              value={ownerName} 
+              value={owner_name} 
               placeholder="enter full name of owner" 
               onChange={onChange}
             />

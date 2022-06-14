@@ -15,12 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// test route for react app // react app will depend on thunk functions to reach this one
-Route::get('/shop', function(){
-    return "Hello world!!";
+Route::post('/users', function() {
+    return 'from backend users';
 });
-Route::get('/shops', function(){
-    return Shop::all();
+// Route::get('/shops', function(Request $request) {
+//     return $request;
+// });
+Route::post('/shops', function(Request $request) {
+
+
+    // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+    // $txt = $request;
+    // fwrite($myfile, $txt);
+    // fclose($myfile);
+
+
+    return $request;
 });
 
 // BOILERPLATE route
