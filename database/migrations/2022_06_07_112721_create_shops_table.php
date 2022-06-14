@@ -19,8 +19,8 @@ class CreateShopsTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             // 
-            $table->string('addr_line_1')->nullable();
-            $table->string('addr_line_2')->nullable();
+            $table->string('addr_line1')->nullable();
+            $table->string('addr_line2')->nullable();
             $table->decimal('addr_city', 5, 0)->nullable();
             $table->decimal('addr_state', 5, 0)->nullable();
             $table->decimal('addr_country', 5, 0)->nullable();
@@ -36,8 +36,8 @@ class CreateShopsTable extends Migration
             $table->string('owner_email')->nullable();
             $table->string('owner_phone')->nullable();
             // 
-            $table->string('owner_addr_line_1')->nullable();
-            $table->string('owner_addr_line_2')->nullable();
+            $table->string('owner_addr_line1')->nullable();
+            $table->string('owner_addr_line2')->nullable();
             $table->decimal('owner_addr_city', 5, 0)->nullable();
             $table->decimal('owner_addr_state', 5, 0)->nullable();
             $table->decimal('owner_addr_country', 5, 0)->nullable();

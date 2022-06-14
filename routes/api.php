@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/users', function() {
-    return 'from backend users';
-});
+Route::get('/shops', [ShopController::class, 'index']);
 
-// Route::get('/shops', function(Request $request) {
-//     return $request;
-// });
-
-Route::post('/shops', function(Request $request) {
+/* Route::post('/shops', function(Request $request) {
     // 
     // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
     // $txt = $request;
@@ -31,7 +25,9 @@ Route::post('/shops', function(Request $request) {
     // fclose($myfile);
     // 
     return $request;
-});
+}); */
+
+Route::post('/shops', [ShopController::class, 'store']);
 
 // BOILERPLATE route
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

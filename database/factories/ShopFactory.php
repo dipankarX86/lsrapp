@@ -17,8 +17,8 @@ class ShopFactory extends Factory
             'email' => $this->faker->email(),
             'phone' => $this->faker->phoneNumber(),
 
-            'addr_line_1' => $this->faker->streetAddress(),
-            'addr_line_1' =>  $this->faker->streetAddress(),
+            'addr_line1' => $this->faker->streetAddress(),
+            'addr_line2' =>  $this->faker->streetAddress(),
             'addr_city' => '1',
             'addr_state' => '1',
             'addr_country' => '1',
@@ -34,8 +34,8 @@ class ShopFactory extends Factory
             'owner_email' => $this->faker->email(),
             'owner_phone' => $this->faker->phoneNumber(),
 
-            'owner_addr_line_1' =>  $this->faker->streetAddress(),
-            'owner_addr_line_1' =>  $this->faker->streetAddress(),
+            'owner_addr_line1' =>  $this->faker->streetAddress(),
+            'owner_addr_line2' =>  $this->faker->streetAddress(),
             'owner_addr_city' => '1',
             'owner_addr_state' => '1',
             'owner_addr_country' => '1',

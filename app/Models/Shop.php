@@ -20,8 +20,8 @@ class Shop extends Model
         'email',
         'phone',
 
-        'addr_line_1',
-        'addr_line_1',
+        'addr_line1',
+        'addr_line2',
         'addr_city',
         'addr_state',
         'addr_country',
@@ -37,8 +37,8 @@ class Shop extends Model
         'owner_email',
         'owner_phone',
 
-        'owner_addr_line_1',
-        'owner_addr_line_1',
+        'owner_addr_line1',
+        'owner_addr_line2',
         'owner_addr_city',
         'owner_addr_state',
         'owner_addr_country',
