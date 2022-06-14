@@ -1,18 +1,17 @@
-import React from 'react'
 import {Link} from 'react-router-dom'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AdminUserLogin() {
   return (
     <>
-      {/* <div>AdminUserLogin</div> */}
       <h1>All Available Dashboard links</h1>
       <li>
-          <Link to='/master'>
+          <Link to='/masterAdmin'>
             Master
           </Link>
       </li>
       <li>
-          <Link to='/shop'>
+          <Link to='/shopAdmin'>
             Shop
           </Link>
       </li>

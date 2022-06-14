@@ -12,8 +12,8 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
-function FrontDeskDashboard() {
-
+function ShopAdminDashboard() {
+  
   const expand = 'md'
   const theme = 'light'
 
@@ -22,7 +22,7 @@ function FrontDeskDashboard() {
 
       <Navbar key={expand} bg={theme} variant={theme} expand={expand} className="mb-3">
         <Container fluid>
-          <Navbar.Brand href="#/frontDesk">
+          <Navbar.Brand href="#/shopAdmin">
             <img src={logo} alt="DCleans.com" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -70,10 +70,10 @@ function FrontDeskDashboard() {
 
       <Outlet />
 
-      <h3>FrontDeskDashboard</h3>
+      <h3>ShopAdminDashboard</h3>
 
     </>
   )
 }
 
-export default FrontDeskDashboard
+export default ShopAdminDashboard
