@@ -30,8 +30,8 @@ class ShopController extends Controller
         $request->validate([
             'email' => 'required|string|unique:shops,email',
             'phone' => 'required|string|max:14|unique:shops,phone',
-            'lat_lon' => ['required', 'string', 'regex:^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$'], 
-                                                // regex:^((\-?|\+?)?\d+(\.\d+)?),\s*((\-?|\+?)?\d+(\.\d+)?)$  too should work.
+            'lat_lon' => ['required', 'string', 'regex:/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/'], 
+                                                // regex:/^((\-?|\+?)?\d+(\.\d+)?),\s*((\-?|\+?)?\d+(\.\d+)?)$/  too should work.
             'owner_email' => 'required|string|unique:shops,owner_email',
             'owner_phone' => 'required|string|max:14|unique:shops,owner_phone',
         ]);
