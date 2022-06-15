@@ -169,10 +169,10 @@ function CreateShop() {
             />
           </div>
           <div className="mb-3 formm-group">
-            <label htmlFor="phone" className="form-label">Shop Phone(10 digits)</label>
+            <label htmlFor="phone" className="form-label">Shop Phone(example: +91 9999999999)</label>
             <input 
               type="tel" 
-              pattern="[0-9]{11}"
+              pattern="((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}"  // or [0-9]{10}
               className="" 
               id="phone" 
               name="phone" 
@@ -343,10 +343,10 @@ function CreateShop() {
             />
           </div>
           <div className="mb-3 formm-group">
-            <label htmlFor="ownerPhone" className="form-label">Owner's Phone(10 digits)</label>
+            <label htmlFor="ownerPhone" className="form-label">Owner's Phone(example: +91 9999999999)</label>
             <input 
               type="tel" 
-              pattern="[0-9]{11}"
+              pattern="((\+*)((0[ -]*)*|((91 )*))((\d{12})+|(\d{10})+))|\d{5}([- ]*)\d{6}"  // [0-9]{10}
               className="" 
               id="ownerPhone" 
               name="ownerPhone" 

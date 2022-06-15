@@ -33,3 +33,9 @@ Route::post('/shops', [ShopController::class, 'store']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+/* new routes beyond 15th june 22 */
+
+
