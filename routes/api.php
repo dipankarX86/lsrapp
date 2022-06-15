@@ -15,8 +15,29 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-Route::get('/shops', [ShopController::class, 'index']);
 
+/* USER AND AUTH ROUTES */
+// Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', function(Request $request) {
+    
+    $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+    $txt = $request;
+    fwrite($myfile, $txt);
+    fclose($myfile);
+    
+    return $request;
+});
+
+
+/* SHOP ROUTES */
+Route::get('/shops', [ShopController::class, 'index']);
+Route::post('/shops', [ShopController::class, 'store']);
+
+
+/* TO SEE LATER */
+/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+}); */
 /* Route::post('/shops', function(Request $request) {
     // 
     // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
@@ -26,16 +47,4 @@ Route::get('/shops', [ShopController::class, 'index']);
     // 
     return $request;
 }); */
-
-Route::post('/shops', [ShopController::class, 'store']);
-
-// BOILERPLATE route
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-
-/* new routes beyond 15th june 22 */
-
-
+/* Route::resource('shops', ShopController::class); */

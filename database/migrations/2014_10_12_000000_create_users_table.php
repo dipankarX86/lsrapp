@@ -15,19 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('role'); // now let just use hardcoded text
-                    // but later will need a role table, which will tell which features to provide to a role, 
-                    // 
+            $table->string('role')->nullable();;
+            $table->string('name')->nullable();;
             $table->string('username')->unique()->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('phone')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->timestamp('phone_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();;
             $table->rememberToken();
             $table->timestamps();
-        });
+        });  
+        // ALL THE FIELDS ARE MADE NULLABLE, WHICH IS NOT RIGHT. WILL NEED TO FIND THE RIGHT WAY LATER
     }
 
     /**

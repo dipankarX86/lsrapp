@@ -47,6 +47,9 @@ class CreateShopsTable extends Migration
             // $table->foreignId('gallery');        // load these separately in another rest call if needed
                                                     // can be easily searched for the shop id, dont link them in the model
 
+                                                    // shop will need some varification columns: 'phone', 'email', 'owner-ph', 'owner-em', 'documents' and 
+                                                    // 'permissions' and 'status' etc
+
             $table->timestamps();
         });
     }

@@ -7,7 +7,6 @@ const API_URL_MORE = '/api/shops/'
 // Create shop
 const createShop = async (shopData) => {
   console.log(shopData)
-
   // 
   const options = {
     // preservedKeys: ['ownerAddrLine1', 'ownerAddrLine2'],
@@ -16,7 +15,6 @@ const createShop = async (shopData) => {
   const client = applyCaseMiddleware(axios.create(), options);
   const response = await client.post(API_URL, shopData)
   // 
-
   console.log(response.data)
   return response.data
 }
