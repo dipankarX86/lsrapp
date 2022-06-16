@@ -16,29 +16,24 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-/* USER AND AUTH ROUTES */
-// Public routes
-// Protected routes
-Route::post('/users', [UserController::class, 'store']);
-
-/* SHOP ROUTES */
-// Public routes
+// PUBLIC ROUTES
+// user and auth routes
+Route::post('/users/login', [UserController::class, 'login']);
+//
+// shop routes
 Route::get('/shops', [ShopController::class, 'index']);
 
-// Protected routes
-Route::middleware('auth:sanctum')->post('/shops', [ShopController::class, 'store']);
+// PROTECTED ROUTES
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    // user and auth routes
+    Route::post('/users', [UserController::class, 'store']);  // POST, creates a new user
+    Route::post('/users/logout', [UserController::class, 'logout']);
+    //
+    // shop routes
+    Route::post('/shops', [ShopController::class, 'store']);  // POST, creates a new shop
+});
 
-/* TO SEE LATER */
-/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-}); */
-/* Route::post('/shops', function(Request $request) {
-    // 
-    // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-    // $txt = $request;
-    // fwrite($myfile, $txt);
-    // fclose($myfile);
-    // 
-    return $request;
-}); */
-/* Route::resource('shops', ShopController::class); */
+// $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+// $txt = $request;
+// fwrite($myfile, $txt);
+// fclose($myfile);
