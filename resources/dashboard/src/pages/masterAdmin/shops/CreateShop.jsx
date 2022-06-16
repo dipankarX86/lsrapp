@@ -127,7 +127,7 @@ function CreateShop() {
     }
 
     dispatch(createShop(shopData))
-    toast.error('form submitted!!!!')
+    toast.success('form submitted!!!!')
     // if(true) {
     //   toast.error('passwords do not match')
     // } else {
@@ -150,7 +150,7 @@ function CreateShop() {
         <h1>
           <FaStore /> Create Shop
         </h1>
-        <p>Add new shop to the workforce</p>
+        <p>Add a new shop to the workforce</p>
       </section>
 
       <section className="formm">
