@@ -18,16 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-
-        // 'role',
-        // 'name',
-        // 'username',
-        // 'email',
-        // 'phone',
-        // 'password',
-
+        'role',
         'name',
+        'username',
         'email',
+        'phone',
         'password',
     ];
     // we already have some fillables, but are they enough?

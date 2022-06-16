@@ -16,7 +16,7 @@ function CreateAccount() {
     email: '',
     phone: '',
     password: '',
-    password2: ''
+    password_confirmation: ''
   })
 
   const {
@@ -26,7 +26,7 @@ function CreateAccount() {
     email, 
     phone, 
     password, 
-    password2
+    password_confirmation
   } = formData
 
   const navigate = useNavigate()
@@ -62,7 +62,8 @@ function CreateAccount() {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if(password !== password2) {
+    // if(false) {
+    if(password !== password_confirmation) {
       toast.error('passwords do not match')
     } else {
       const userData = {
@@ -72,7 +73,7 @@ function CreateAccount() {
         email, 
         phone, 
         password, 
-        password2
+        password_confirmation
       }
 
       dispatch(createUser(userData))
@@ -178,13 +179,13 @@ function CreateAccount() {
           </div>
 
           <div className="mb-3 formm-group">
-            <label htmlFor="password2" className="form-label">Confirm Password</label>
+            <label htmlFor="password_confirmation" className="form-label">Confirm Password</label>
             <input 
               type="password" 
               className="" 
-              id="password2" 
-              name="password2" 
-              value={password2} 
+              id="password_confirmation" 
+              name="password_confirmation" 
+              value={password_confirmation} 
               placeholder="confirm password" 
               onChange={onChange}
             />
