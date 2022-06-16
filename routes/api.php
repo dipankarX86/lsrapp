@@ -30,8 +30,8 @@ Route::post('/users', function(Request $request) {
 
 
 /* SHOP ROUTES */
-Route::get('/shops', [ShopController::class, 'index']);
-Route::post('/shops', [ShopController::class, 'store']);
+Route::middleware('auth:sanctum')->get('/shops', [ShopController::class, 'index']);
+Route::middleware('auth:sanctum')->post('/shops', [ShopController::class, 'store']);
 
 
 /* TO SEE LATER */
