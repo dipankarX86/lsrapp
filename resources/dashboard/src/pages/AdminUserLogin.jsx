@@ -4,7 +4,7 @@ import {FaSignInAlt} from 'react-icons/fa' //
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router'
 import {toast} from 'react-toastify'
-import {login, reset} from '../features/auth/authSlice'  // Dis not understand the export from authSlice though
+import {login, reset} from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
 
@@ -35,11 +35,11 @@ function Login() {
       toast.error(message)
     }
 
-    // if(isSuccess || user) {
-    //   navigate('/dashboard')
-    // }
+    if(isSuccess || auth) {
+      navigate('/masterAdmin')
+    }
 
-    // dispatch(reset())
+    dispatch(reset())
 
   }, [auth, isSuccess, isError, message, navigate, dispatch])
 
@@ -62,7 +62,6 @@ function Login() {
 
     dispatch(login(userData))
   }
-
 
   const expand = 'md'
   const theme = 'light'

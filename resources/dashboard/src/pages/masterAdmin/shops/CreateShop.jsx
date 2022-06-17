@@ -70,21 +70,28 @@ function CreateShop() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {shops, isLoading, isError, isSuccess, message} = useSelector((state) => state.shops)
+  const {auth} = useSelector((state) => state.auth)
+  // const {shops, isLoading, isError, isSuccess, message} = useSelector((state) => state.shops)
+  const {isLoading, isError, isSuccess, message} = useSelector((state) => state.shops)
 
-  // // use effect function call
-  // useEffect(() => {
-  //   if(isError) {
-  //     toast.error(message)
-  //   }
+  // use effect function call
+  useEffect(() => {
+    if(isError) {
+      toast.error(message)
+    }
 
-  //   if(isSuccess || user) {
-  //     navigate('/dashboard')
-  //   }
+    if(!auth) {
+      // navigate('/')
+      toast.error('Create-Shop access is Unauthorized')
+    }
 
-  //   dispatch(reset())
+    if(isSuccess) {
+      navigate('/masterAdmin/shops')
+    }
 
-  // }, [user, isError, isSuccess, message, navigate, dispatch])
+    dispatch(reset())
+
+  }, [auth, isError, isSuccess, message, navigate, dispatch])
 
   // on change
   const onChange = (e) => {

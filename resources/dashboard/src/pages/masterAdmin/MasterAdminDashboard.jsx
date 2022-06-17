@@ -1,4 +1,12 @@
-// import {Link} from 'react-router-dom'
+
+import { useEffect } from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router'
+import {toast} from 'react-toastify'
+import {logout, reset} from '../../features/auth/authSlice'
+import Spinner from '../../components/Spinner'
+import Button from 'react-bootstrap/Button';
+
 import { Outlet } from "react-router-dom"
 
 import logo from '../../logo.jpeg';
@@ -9,10 +17,38 @@ import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 function MasterAdminDashboard() {
-  
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  // const {auth, isLoading, isSuccess, isError, message} = useSelector((state) => state.auth)
+  const {auth, isLoading, isError, message} = useSelector((state) => state.auth)
+
+  // use effect function call
+  useEffect(() => {
+    if(isError) {
+      toast.error(message)
+    }
+
+    if(!auth) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+
+  }, [auth, isError, message, navigate, dispatch])
+
+  const logUserOut = (e) => {
+    e.preventDefault()
+    dispatch(logout())
+  }
+
+  if(isLoading) {
+    return <Spinner />
+  }
+
   const expand = 'md'
   const theme = 'light'
-
+  //
   return (
     <>
       <Navbar key={expand} bg={theme} variant={theme} expand={expand} className="mb-3">
@@ -75,13 +111,11 @@ function MasterAdminDashboard() {
       </Navbar>
 
       <Outlet />
-
-      
       
       <div className="container app-footer-dash">
         <div className="row">
           <div className="col p-2">
-            Column
+            <Button variant="outline-primary" onClick={logUserOut}>Logout</Button>{' '}
           </div>
           <div className="col p-2">
             This is from: MasterAdminDashboard.js

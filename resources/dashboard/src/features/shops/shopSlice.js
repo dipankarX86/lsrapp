@@ -12,10 +12,7 @@ const initialState = {
 // Create shop
 export const createShop = createAsyncThunk('shops/create', async (shopData, thunkAPI) => {
   try {
-    // console.log('reached token retrieval')
     const token = thunkAPI.getState().auth.auth.token
-    console.log(token) //
-
     return await shopService.createShop(shopData, token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()

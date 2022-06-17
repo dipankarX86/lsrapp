@@ -12,32 +12,33 @@ const initialState = {
 // Create user
 export const createUser = createAsyncThunk('users/create', async (userData, thunkAPI) => {
   try {
-      return await userService.createUser(userData)
+    const token = thunkAPI.getState().auth.auth.token
+    return await userService.createUser(userData, token)
   } catch (error) {
-      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-      return thunkAPI.rejectWithValue(message)
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
   }
 })
 
 // Get users
 export const getUsers = createAsyncThunk('users/getAll', async (_, thunkAPI) => {
   try {
-      const token = thunkAPI.getState().auth.user.token
-      return await userService.getUsers(token)
+    const token = thunkAPI.getState().auth.auth.token
+    return await userService.getUsers(token)
   } catch (error) {
-      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-      return thunkAPI.rejectWithValue(message)
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
   }
 })
 
 // Delete user
 export const deleteUser = createAsyncThunk('users/delete', async (id, thunkAPI) => {
   try {
-      const token = thunkAPI.getState().auth.user.token
-      return await userService.deleteUser(id, token)
+    const token = thunkAPI.getState().auth.auth.token
+    return await userService.deleteUser(id, token)
   } catch (error) {
-      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-      return thunkAPI.rejectWithValue(message)
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+    return thunkAPI.rejectWithValue(message)
   }
 })
 

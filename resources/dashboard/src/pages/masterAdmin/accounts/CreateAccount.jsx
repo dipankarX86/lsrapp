@@ -32,7 +32,9 @@ function CreateAccount() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {users, isLoading, isError, isSuccess, message} = useSelector((state) => state.users)
+  const {auth} = useSelector((state) => state.auth)
+  // const {users, isLoading, isError, isSuccess, message} = useSelector((state) => state.users)
+  const {isLoading, isError, isSuccess, message} = useSelector((state) => state.users)
 
   // use effect function call
   useEffect(() => {
@@ -40,16 +42,17 @@ function CreateAccount() {
       console.log(message);
     }
 
-    // if(!user) {
-    //   navigate('/dashboard/login')
-    // }
+    if(!auth) {
+      // navigate('/')
+      toast.error('Create-Account access is unauthorized')
+    }
 
-    // dispatch(getGoals())
+    if(isSuccess) {
+      navigate('/masterAdmin/accounts')
+    }
 
-    // return () => {
-    //   dispatch(reset())
-    // }
-  }, [users, isError, isSuccess, message, navigate, dispatch])
+    dispatch(reset())
+  }, [auth, isError, isSuccess, message, navigate, dispatch])
 
   // on change (what is it???)
   const onChange = (e) => {
