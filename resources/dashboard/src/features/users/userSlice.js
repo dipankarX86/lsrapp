@@ -1,12 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import userService from './userService'
 
-// Get user from local storage
-// const user = JSON.parse(localStorage.getItem('user'))
-
 const initialState = {
-  // user: user ? user : null,
-  // user: null,
   users: [],
   isLoading: false,
   isSuccess: false,
@@ -52,7 +47,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
       reset: (state) => {  // cannot use reset: (state) => initialState if solo user comes after auth applied
-          // state.user = null
           state.users = []
           state.isLoading = false
           state.isSuccess = false
