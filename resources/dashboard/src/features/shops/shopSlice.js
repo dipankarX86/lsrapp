@@ -13,7 +13,9 @@ const initialState = {
 export const createShop = createAsyncThunk('shops/create', async (shopData, thunkAPI) => {
   try {
     // console.log('reached token retrieval')
-    const token = thunkAPI.getState().auth.user.token
+    const token = thunkAPI.getState().auth.auth.token
+    console.log(token) //
+
     return await shopService.createShop(shopData, token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
@@ -24,7 +26,7 @@ export const createShop = createAsyncThunk('shops/create', async (shopData, thun
 // Get shops
 export const getShops = createAsyncThunk('shops/getAll', async (_, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().auth.shop.token
+    const token = thunkAPI.getState().auth.auth.token
     return await shopService.getShops(token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
@@ -35,7 +37,7 @@ export const getShops = createAsyncThunk('shops/getAll', async (_, thunkAPI) => 
 // Delete shop
 export const deleteShop = createAsyncThunk('shops/delete', async (id, thunkAPI) => {
   try {
-    const token = thunkAPI.getState().auth.shop.token
+    const token = thunkAPI.getState().auth.auth.token
     return await shopService.deleteShop(id, token)
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()

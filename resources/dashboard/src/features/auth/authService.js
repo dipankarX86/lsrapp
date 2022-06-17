@@ -4,7 +4,10 @@ const API_URL = '/api/users'
 
 // Login user
 const login = async (userData) => {
+  // console.log(userData)
+  
   const response = await axios.post(API_URL + '/login', userData)
+  console.log(response.data)
 
   if(response.data) {
       localStorage.setItem('auth', JSON.stringify(response.data))

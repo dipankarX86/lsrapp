@@ -128,15 +128,6 @@ function CreateShop() {
 
     dispatch(createShop(shopData))
     toast.success('form submitted!!!!')
-    // if(true) {
-    //   toast.error('passwords do not match')
-    // } else {
-    //   const userData = {
-    //     email
-    //   }
-
-    //   dispatch(createShop(userData))
-    // }
   }
 
   if(isLoading) {
