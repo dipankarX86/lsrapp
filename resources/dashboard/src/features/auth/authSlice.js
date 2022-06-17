@@ -64,5 +64,5 @@ export const authSlice = createSlice({
   }
 })
 
-export const {reset} = userSlice.actions
-export default userSlice.reducer
+export const {reset} = authSlice.actions
+export default authSlice.reducer
