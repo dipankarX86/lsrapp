@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import userService from './userService'
+import authService from './authService'
 
-// Get user from local storage
-const user = JSON.parse(localStorage.getItem('user'))
+// Get auth from local storage
+const auth = JSON.parse(localStorage.getItem('auth'))
 
 const initialState = {
-  user: user ? user : null,
+  auth: auth ? auth : null,
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -13,43 +13,54 @@ const initialState = {
 }
 
 // User login
-// export const login = createAsyncThunk('auth/login', async (auth, thunkAPI) => {
-//   try {
-//       return await userService.login(auth)
-//   } catch (error) {
-//       const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-//       return thunkAPI.rejectWithValue(message)
-//   }
-// })
+export const login = createAsyncThunk('auth/login', async (authCreds, thunkAPI) => {
+  try {
+      return await authService.login(authCreds)
+  } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkAPI.rejectWithValue(message)
+  }
+})
 
-// the Actual slice function
-export const userSlice = createSlice({
-  name: 'user',
+// User logout
+export const logout = createAsyncThunk('auth/logout', 
+  async () => {
+    await authService.logout()
+  }
+)
+
+// the Slice
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {
-      reset: (state) => {  // cannot use reset: (state) => initialState if solo user comes after auth applied
-          state.authUser = null
-          state.isLoading = false
-          state.isSuccess = false
-          state.isError = false
-          state.message = ''
-      }
+    reset: (state) => {
+      state.isLoading = false
+      state.isSuccess = false
+      state.isError = false
+      state.message = ''
+    }
   },
   extraReducers: (builder) => {
-    // builder
-    // .addCase(createUser.pending, (state) => {
-    //     state.isLoading = true
-    // })
-    // .addCase(createUser.fulfilled, (state, action) => {
-    //     state.isLoading = false
-    //     state.isSuccess = true
-    //     state.users.push(action.payload)
-    // })
-    // .addCase(createUser.rejected, (state, action) => {
-    //     state.isLoading = false
-    //     state.isError = true
-    //     state.message = action.payload
-    // })
+    builder
+    .addCase(login.pending, (state) => {
+      state.isLoading = true
+    })
+    .addCase(login.fulfilled, (state, action) => {
+      state.isLoading = false
+      state.isSuccess = true
+      state.auth = action.payload
+    })
+    .addCase(login.rejected, (state, action) => {
+      state.isLoading = false
+      state.isError = true
+      state.message = action.payload
+      state.auth = null
+    })
+
+    .addCase(logout.fulfilled, (state) => {
+      state.auth = null
+    })
   }
 })
 

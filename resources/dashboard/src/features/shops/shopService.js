@@ -2,25 +2,59 @@ import axios from 'axios'
 import applyCaseMiddleware from 'axios-case-converter';
 
 const API_URL = '/api/shops'
-const API_URL_MORE = '/api/shops/'
 
 // Create shop
-const createShop = async (shopData) => {
-  console.log(shopData)
-  // 
+const createShop = async (shopData, token) => {
+  console.log(shopData) //
+
+  // setting up case converter options
   const options = {
-    // preservedKeys: ['ownerAddrLine1', 'ownerAddrLine2'],
     ignoreHeaders: true
   };
   const client = applyCaseMiddleware(axios.create(), options);
-  const response = await client.post(API_URL, shopData)
-  // 
-  console.log(response.data)
+
+  // setting up the bearer token
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+  const response = await client.post(API_URL, shopData, config)
+
+  console.log(response.data) //
+  return response.data
+}
+
+// Get shops
+const getShops = async (token) => {
+  const config = {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
+
+  const response = await axios.get(API_URL, config)
+
+  return response.data
+}
+
+// Delete shop
+const deleteShop = async (shopId, token) => {
+  const config = {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
+
+  const response = await axios.delete(API_URL + shopId, config)
+
   return response.data
 }
 
 const shopService = {
-  createShop
+  createShop,
+  getShops,
+  deleteShop
 }
 
 export default shopService

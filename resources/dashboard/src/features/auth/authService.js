@@ -7,14 +7,19 @@ const login = async (userData) => {
   const response = await axios.post(API_URL + '/login', userData)
 
   if(response.data) {
-      localStorage.setItem('user', JSON.stringify(response.data))
+      localStorage.setItem('auth', JSON.stringify(response.data))
   }
-
   return response.data
 }
 
+const logout = () => {
+  localStorage.removeItem('auth')
+  // we could use a server and http only cookie , but this a pretty introductory course
+}
+
 const userService = {
-    login
+    login,
+    logout
 }
 
 export default userService
