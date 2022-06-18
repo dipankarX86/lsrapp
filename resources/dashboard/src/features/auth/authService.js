@@ -12,7 +12,7 @@ const login = async (userData) => {
   
   // then call login and get sanctum token back
   const response = await axios.post(API_URL + '/login', userData)
-  // console.log(response.data)
+  console.log(response.data)
 
   if(response.data) {
       localStorage.setItem('auth', JSON.stringify(response.data))

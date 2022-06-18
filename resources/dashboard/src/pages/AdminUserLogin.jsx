@@ -36,7 +36,30 @@ function Login() {
     }
 
     if(isSuccess || auth) {
-      navigate('/masterAdmin')
+      // console.log(auth.user.role)
+      // navigate('/masterAdmin')
+
+      // User role codes: 
+      // 
+      // masterAdmin:1
+      // shopAdmin:2
+      // frontDesk:3
+      // transporter:4
+      // worker:5
+      // homeService:6
+      if (auth.user.role == '1') {
+        navigate('/masterAdmin')
+      } else if (auth.user.role === '2') {
+        navigate('/shopAdmin')
+      } else if (auth.user.role === '3') {
+        navigate('/frontDesk')
+      } else if (auth.user.role === '4') {
+        navigate('/transporter')
+      } else if (auth.user.role === '5') {
+        navigate('/worker')
+      } else if (auth.user.role === '6') {
+        navigate('/homeService')
+      }
     }
 
     dispatch(reset())

@@ -4,8 +4,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router'
 import {toast} from 'react-toastify'
 import {logout, reset} from '../../features/auth/authSlice'
-import Spinner from '../../components/Spinner'
 import Button from 'react-bootstrap/Button';
+// import Spinner from '../../components/Spinner'
 
 import { Outlet } from "react-router-dom"
 
@@ -21,7 +21,7 @@ function MasterAdminDashboard() {
   const dispatch = useDispatch()
 
   // const {auth, isLoading, isSuccess, isError, message} = useSelector((state) => state.auth)
-  const {auth, isLoading, isError, message} = useSelector((state) => state.auth)
+  const {auth, isError, message} = useSelector((state) => state.auth)
 
   // use effect function call
   useEffect(() => {
@@ -29,7 +29,7 @@ function MasterAdminDashboard() {
       toast.error(message)
     }
 
-    if(!auth) {
+    if(!auth || auth.user.role !== '1') {
       navigate('/')
     }
 
@@ -42,9 +42,9 @@ function MasterAdminDashboard() {
     dispatch(logout())
   }
 
-  if(isLoading) {
-    return <Spinner />
-  }
+  // if(isLoading) {
+  //   return <Spinner />
+  // }
 
   const expand = 'md'
   const theme = 'light'
