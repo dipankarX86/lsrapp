@@ -15,14 +15,24 @@ const login = async (userData) => {
   return response.data
 }
 
-const logout = () => {
+// Logout
+const logout = async (token) => {
+  // first remove the token locally
   localStorage.removeItem('auth')
-  // we could use a server and http only cookie , but this a pretty introductory course
+
+  // now remove it from the server
+  const config = {
+      headers: {
+          Authorization: `Bearer ${token}`
+      }
+  }
+  const response = await axios.post(API_URL + '/logout', '_', config)  // position of arguments are important
+  return response.data
 }
 
-const userService = {
+const authService = {
     login,
     logout
 }
 
-export default userService
+export default authService

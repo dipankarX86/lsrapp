@@ -23,11 +23,15 @@ export const login = createAsyncThunk('auth/login', async (authCreds, thunkAPI) 
 })
 
 // User logout
-export const logout = createAsyncThunk('auth/logout', 
-  async () => {
-    await authService.logout()
+export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+      const token = thunkAPI.getState().auth.auth.token
+      return await authService.logout(token)
+  } catch (error) {
+      const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+      return thunkAPI.rejectWithValue(message)
   }
-)
+})
 
 // the Slice
 export const authSlice = createSlice({
