@@ -5,9 +5,14 @@ const API_URL = '/api/users'
 // Login user
 const login = async (userData) => {
   // console.log(userData)
+
+  // first get the csrf token
+  const csrfToken = await axios.get("/sanctum/csrf-cookie")
+  // console.log(csrfToken)
   
+  // then call login and get sanctum token back
   const response = await axios.post(API_URL + '/login', userData)
-  console.log(response.data)
+  // console.log(response.data)
 
   if(response.data) {
       localStorage.setItem('auth', JSON.stringify(response.data))
