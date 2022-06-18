@@ -16,35 +16,41 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-// PUBLIC ROUTES
 
+// $myfile = fopen("TEST.txt", "w") or die("Unable to open file!");
+// $txt = $token;
+// fwrite($myfile, $txt);
+// fclose($myfile);
+
+
+// ****
+// PUBLIC ROUTES
 //CSRF token for any session, speciaaly important for: cross siterequests
 Route::get('/sanctum/csrf-cookie', function (Request $request) {
-    
     // $token = $request->session()->token();
     $token = csrf_token();
     
-    // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-    // $txt = $token;
-    // fwrite($myfile, $txt);
-    // fclose($myfile);
-
     // return the token
     return response($token, 200);
 });
 
 // user and auth routes
 Route::post('/users/login', [UserController::class, 'login']);
-//
+
 // shop routes
 Route::get('/shops', [ShopController::class, 'index']);
 
+
+// ****
 // PROTECTED ROUTES
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::middleware('auth:sanctum')->post('/users/logout', [UserController::class, 'logout']);
+
+// Master Admin Routes
+Route::group(['middleware' => ['auth:sanctum', 'role:1']], function () {
     // user and auth routes
     Route::post('/users', [UserController::class, 'store']);  // POST, creates a new user
-    Route::post('/users/logout', [UserController::class, 'logout']);
     //
     // shop routes
     Route::post('/shops', [ShopController::class, 'store']);  // POST, creates a new shop
 });
+

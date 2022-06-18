@@ -47,12 +47,12 @@ class UserController extends Controller
         ]);
 
         // create the api token
-        $token = $user->createToken('myAppToken')->plainTextToken;
+        // $token = $user->createToken('myAppToken')->plainTextToken;
 
         // response
         $response = [
             'user' => $user,
-            'token' => $token
+            // 'token' => $token
         ];
 
         // return what is needed
@@ -128,12 +128,6 @@ class UserController extends Controller
 
     // Logout function
     public function logout(Request $request) {
-
-        // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        // $txt = $request;
-        // fwrite($myfile, $txt);
-        // fclose($myfile);
-
         // auth()->user()->tokens()->delete();
         $request->user()->tokens()->delete();
 
@@ -141,6 +135,19 @@ class UserController extends Controller
             'message' => 'Logged Out'
         ];
     }
+    
+    // // Logout function
+    // public function logout(Request $request) {
+    //     $myfile = fopen("TEST.txt", "w") or die("Unable to open file!");
+    //     $txt = auth()->user()->role;
+    //     fwrite($myfile, $txt);
+    //     fclose($myfile);
+
+    //     return [
+    //         'message' => 'Logged Out'
+    //     ];
+    // }
+
 
 
 }
