@@ -17,6 +17,22 @@ use App\Http\Controllers\ShopController;
 */
 
 // PUBLIC ROUTES
+
+//CSRF token for any session, speciaaly important for: cross siterequests
+Route::get('/sanctum/csrf-cookie', function (Request $request) {
+    
+    // $token = $request->session()->token();
+    $token = csrf_token();
+    
+    // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+    // $txt = $token;
+    // fwrite($myfile, $txt);
+    // fclose($myfile);
+
+    // return the token
+    return response($token, 200);
+});
+
 // user and auth routes
 Route::post('/users/login', [UserController::class, 'login']);
 //
@@ -32,8 +48,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // shop routes
     Route::post('/shops', [ShopController::class, 'store']);  // POST, creates a new shop
 });
-
-// $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-// $txt = $request;
-// fwrite($myfile, $txt);
-// fclose($myfile);

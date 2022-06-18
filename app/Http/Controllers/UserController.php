@@ -134,7 +134,8 @@ class UserController extends Controller
         // fwrite($myfile, $txt);
         // fclose($myfile);
 
-        auth()->user()->tokens()->delete();
+        // auth()->user()->tokens()->delete();
+        $request->user()->tokens()->delete();
 
         return [
             'message' => 'Logged Out'
