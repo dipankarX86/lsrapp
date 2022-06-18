@@ -129,10 +129,10 @@ class UserController extends Controller
     // Logout function
     public function logout(Request $request) {
 
-        $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        $txt = $request;
-        fwrite($myfile, $txt);
-        fclose($myfile);
+        // $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+        // $txt = $request;
+        // fwrite($myfile, $txt);
+        // fclose($myfile);
 
         auth()->user()->tokens()->delete();
 
