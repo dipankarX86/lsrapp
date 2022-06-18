@@ -136,18 +136,4 @@ class UserController extends Controller
         ];
     }
     
-    // // Logout function
-    // public function logout(Request $request) {
-    //     $myfile = fopen("TEST.txt", "w") or die("Unable to open file!");
-    //     $txt = auth()->user()->role;
-    //     fwrite($myfile, $txt);
-    //     fclose($myfile);
-
-    //     return [
-    //         'message' => 'Logged Out'
-    //     ];
-    // }
-
-
-
 }
