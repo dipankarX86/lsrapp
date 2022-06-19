@@ -16,41 +16,31 @@ use App\Http\Controllers\ShopController;
 |
 */
 
+/* $myfile = fopen("TEST.txt", "w") or die("Unable to open file!");
+$txt = $token;
+fwrite($myfile, $txt);
+fclose($myfile); */
 
-// $myfile = fopen("TEST.txt", "w") or die("Unable to open file!");
-// $txt = $token;
-// fwrite($myfile, $txt);
-// fclose($myfile);
+/* // Master Admin Routes
+Route::group(['middleware' => ['auth:sanctum', 'role:1']], function () {
+    Route::post('/users', [UserController::class, 'store']);  // creates a new user
+    Route::post('/shops', [ShopController::class, 'store']);  // creates a new shop
+}); */
 
-
-// ****
 // PUBLIC ROUTES
-//CSRF token for any session, speciaaly important for: cross siterequests
-Route::get('/sanctum/csrf-cookie', function (Request $request) {
-    // $token = $request->session()->token();
-    $token = csrf_token();
-    
-    // return the token
+// ****
+Route::get('/sanctum/csrf-cookie', function (Request $request) {  // CSRF token for any session, specialy important for: cross site requests
+    $token = csrf_token();  // or can use: // $token = $request->session()->token();
     return response($token, 200);
 });
-
-// user and auth routes
-Route::post('/users/login', [UserController::class, 'login']);
-
-// shop routes
-Route::get('/shops', [ShopController::class, 'index']);
+//
+Route::post('/users/login', [UserController::class, 'login']);  // Logging in, for any admin user
+Route::get('/shops', [ShopController::class, 'index']);  // show all the shops available
 
 
-// ****
 // PROTECTED ROUTES
-Route::middleware('auth:sanctum')->post('/users/logout', [UserController::class, 'logout']);
-
-// Master Admin Routes
-Route::group(['middleware' => ['auth:sanctum', 'role:1']], function () {
-    // user and auth routes
-    Route::post('/users', [UserController::class, 'store']);  // POST, creates a new user
-    //
-    // shop routes
-    Route::post('/shops', [ShopController::class, 'store']);  // POST, creates a new shop
-});
+// ****
+Route::middleware('auth:sanctum')->post('/users/logout', [UserController::class, 'logout']);  // logs the user out
+Route::middleware(['auth:sanctum', 'role:1'])->post('/users', [UserController::class, 'store']);  // creates a new user
+Route::middleware(['auth:sanctum', 'role:1'])->post('/shops', [ShopController::class, 'store']);  // creates a new shop
 
